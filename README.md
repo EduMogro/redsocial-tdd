@@ -24,6 +24,8 @@ Proyecto para crear una red social usando TDD con Laravel 8.54, PHP 7.3, VueJS 3
 - Instalar los controladores de Chrome para Dusk: > php artisan dusk:chrome-driver (solo ejecutar una vez)
 - Ejecutar los tests: > php artisan dusk
 
+Nota: tener habiltada la extensión pdo_sqlite en el archivo php.ini
+
 ## Licencia
 
 EL framework de Laravel es un software open-source bajo licencia de [MIT license](https://opensource.org/licenses/MIT).
