@@ -8,10 +8,10 @@
                     <form action="{{ route('statuses.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
-                            <textarea class="form-control border-0" placeholder="Ingresa un estado" name="body"></textarea>
+                            <textarea name="body" class="form-control border-0" placeholder="¿En qué estás pensando?"></textarea>
                         </div>
                         <div class="card-footer">
-                            <button type="button" class="btn btn-primary" id="create-status">Publicar estado</button>
+                            <button class="btn btn-primary" id="create-status">Publicar</button>
                         </div>
                     </form>
                 </div>
