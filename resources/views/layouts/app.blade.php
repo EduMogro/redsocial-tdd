@@ -53,7 +53,8 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="{{ url('locale/es') }}">{{ __('messages.spanish') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ url('locale/en') }}">{{ __('messages.english') }}</a></li>
                             </ul>
                         </li>
                     </ul>

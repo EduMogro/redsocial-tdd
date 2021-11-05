@@ -22,5 +22,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('statuses', [StatusesController::class,'store'])->name('statuses.store')->middleware('auth');
 
-
+Route::get('locale/{locale}', function ($locale) {
+    session()->put('locale', $locale);
+    return Redirect::back();
+});
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
