@@ -17,7 +17,7 @@ use App\Http\Controllers\StatusesController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Auth::routes();
 Route::post('statuses', [StatusesController::class,'store'])->name('statuses.store')->middleware('auth');

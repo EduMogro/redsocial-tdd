@@ -18,9 +18,12 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'login_title' => 'Login',
     'email_address' => 'E-Mail Address',
+    'email_placeholder' => 'Your E-mail',
     'password' => 'Password',
+    'password_placeholder' => 'Your password',
     'remember_me' => 'Remember me',
     'forgot_password_link' => 'Forgot your password',
     'login_btn' => 'Login',
+    'logout' => 'Log Out',
 
 ];

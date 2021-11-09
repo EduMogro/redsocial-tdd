@@ -18,9 +18,12 @@ return [
     'throttle' => 'Demasiados intentos de inicio de sesión. Por favor, intenta de nuevo en :seconds segundos.',
     'login_title' => 'Acceso',
     'email_address' => 'Dirección de E-mail',
+    'email_placeholder' => 'Tu E-mail',
     'password' => 'Contraseña',
+    'password_placeholder' => 'Tu contraseña',
     'remember_me' => 'Recuérdame',
     'forgot_password_link' => 'Olvidaste tu contraseña',
     'login_btn' => 'Acceder',
+    'logout' => 'Cerrar sesión'
 
 ];
