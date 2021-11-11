@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\StatusesController;
 
 /*
@@ -20,6 +21,7 @@ Route::get('/', function () {
 })->name('home');
 
 Auth::routes();
+Route::get('statuses',[StatusesController::class,'index'])->name('statuses.index');
 Route::post('statuses', [StatusesController::class,'store'])->name('statuses.store')->middleware('auth');
 
 Route::get('locale/{locale}', function ($locale) {
