@@ -5,8 +5,8 @@
                 <div class="d-flex align-items-center mb-3">
                     <img class="rounded me-3 shadow-sm" width="40px" alt="" src="https://www.pmfarma.es/images/avatar-equipo.png">
                     <div>
-                        <h5 class="mb-1">Eduardo Mogro</h5>
-                        <div class="small text-muted">Hace una hora</div>
+                        <h5 class="mb-1">{{ status.user_name }}</h5>
+                        <div class="small text-muted">{{ status.ago }}</div>
                     </div>
                 </div>
                 <p class="card-text text secondary">

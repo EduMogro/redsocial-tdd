@@ -28,7 +28,7 @@ export default {
                  .then(res => {
                     //  console.log(res.data)
                     // this.statuses.push(res.data);
-                    EventBus.$emit('status-created',res.data);
+                    EventBus.$emit('status-created',res.data.data);
                     this.body = ''
                  })
                  .catch(err => {
