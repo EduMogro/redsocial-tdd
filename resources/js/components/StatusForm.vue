@@ -1,16 +1,20 @@
 <template>
     <div>
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" v-if="isAuthenticated">
             <div class="card-body">
-                <textarea v-model="body" name="body" class="form-control border-0" placeholder="¿En qué estás pensando?"></textarea>
+                <textarea v-model="body" 
+                          name="body" 
+                          class="form-control border-0" 
+                          :placeholder="`¿En qué estás pensando ${currentUser.name}?`">
+                </textarea>
             </div>
             <div class="card-footer">
                 <button class="btn btn-primary" id="create-status">Publicar</button>
             </div>
         </form>
-        <!-- <div v-for="(status, index) in statuses" :key="index">
-            {{ status.body }}
-        </div> -->
+        <div v-else class="card-body">
+            <a href="/login">Debes hacer login</a>
+        </div>
     </div>
 </template>
 
@@ -19,15 +23,12 @@ export default {
     data() {
         return {
             body: '',
-            // statuses: []
         }
     },
     methods: {
         submit() {
             axios.post('/statuses', {body: this.body})
                  .then(res => {
-                    //  console.log(res.data)
-                    // this.statuses.push(res.data);
                     EventBus.$emit('status-created',res.data.data);
                     this.body = ''
                  })
