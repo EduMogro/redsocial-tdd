@@ -31,5 +31,10 @@ class StatusesController extends Controller
         return StatusResource::make($status);
     }
 
+    public function destroy()
+    {
+        
+    }
+
 
 }
