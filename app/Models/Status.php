@@ -22,4 +22,16 @@ class Status extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function like()
+    {
+        $this->likes()->firstOrCreate([
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function isLiked()
+    {
+        return $this->likes()->where('user_id',auth()->id())->exists();
+    }
 }

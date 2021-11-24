@@ -40,4 +40,62 @@ class StatusTest extends TestCase
 
         $this->assertInstanceOf(Like::class, $status->likes->first());
     }
+
+
+    /**
+     * @test
+     *
+     * @return void
+     */
+    public function a_status_can_be_liked()
+    {
+        $status = Status::factory()->create();
+
+        $this->actingAs(User::factory()->create());
+
+        $status->like();
+
+        $this->assertEquals(1, $status->likes()->count());
+    }
+
+        /**
+     * @test
+     *
+     * @return void
+     */
+    public function a_status_can_be_liked_once()
+    {
+        $status = Status::factory()->create();
+
+        $this->actingAs(User::factory()->create());
+
+        $status->like();
+
+        $this->assertEquals(1, $status->likes()->count());
+
+        $status->like();
+
+        // EL método fresh() vuelve a obtener el modelo desde la db para que esté actualizado
+        $this->assertEquals(1, $status->fresh()->likes()->count());
+    }
+
+    /**
+     * @test
+     *
+     * @return void
+     */
+    public function a_status_know_if_it_has_been_liked()
+    {
+        $status = Status::factory()->create();
+
+        $this->assertFalse($status->isLiked());
+
+        $this->actingAs(User::factory()->create());
+
+        $this->assertFalse($status->isLiked());
+
+        $status->like();
+
+        $this->assertTrue($status->isLiked());
+    }
 }

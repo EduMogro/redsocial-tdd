@@ -26,7 +26,7 @@ Route::get('statuses',[StatusesController::class,'index'])->name('statuses.index
 Route::post('statuses', [StatusesController::class,'store'])->name('statuses.store')->middleware('auth');
 
 
-Route::post('statuses/{status}/likes',[StatusLikesController::class, 'store'])->name('statuses.likes.store');
+Route::post('statuses/{status}/likes',[StatusLikesController::class, 'store'])->name('statuses.likes.store')->middleware('auth');
 
 
 Route::get('locale/{locale}', function ($locale) {

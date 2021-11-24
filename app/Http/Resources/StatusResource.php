@@ -16,11 +16,13 @@ class StatusResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
+            'id' => $this->id,
             'body' => $this->body,
             'user_name' => $this->user->name,
             // 'user_avatar' => $this->user->avatar,
             'user_avatar' => 'https://www.pmfarma.es/images/avatar-equipo.png',
             'ago' => $this->created_at->diffForHumans(),
+            'is_liked' => $this->isLiked(),
         ];
     }
 }

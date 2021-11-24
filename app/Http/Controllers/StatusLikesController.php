@@ -9,8 +9,9 @@ class StatusLikesController extends Controller
 {
     public function store(Status $status)
     {
-        $status->likes()->create([
-            'user_id' => auth()->id()
-        ]);
+        $status->like();
+        // $status->likes()->create([
+        //     'user_id' => auth()->id()
+        // ]);
     }
 }
