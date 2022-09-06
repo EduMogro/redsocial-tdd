@@ -7,6 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- User session -->
+    <meta name="user" content="{{ Auth::user() }}">
 
     <title>{{ config('app.name', 'SocialApp') }}</title>
 
@@ -17,6 +19,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Icons -->
+    <link href="https://cdn.staticfile.org/font-awesome/5.15.4/css/all.css" rel="stylesheet">
+
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
@@ -26,7 +31,10 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">SocialApp</a>
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <i class="fa fa-address-book me-1 text-primary"></i>
+                    SocialApp
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +83,7 @@
         </nav>
 
         <main class="py-4">
-            @yield('content');
+            @yield('content')
         </main>
     </div>
 </body>
