@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\CommentResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class StatusResource extends JsonResource
@@ -14,7 +15,6 @@ class StatusResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
         return [
             'id' => $this->id,
             'body' => $this->body,
@@ -23,6 +23,8 @@ class StatusResource extends JsonResource
             'user_avatar' => 'https://www.pmfarma.es/images/avatar-equipo.png',
             'ago' => $this->created_at->diffForHumans(),
             'is_liked' => $this->isLiked(),
+            'likes_count' => $this->likesCount(),
+            'comments' => CommentResource::collection($this->comments),
         ];
     }
 }

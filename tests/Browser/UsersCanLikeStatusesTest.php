@@ -26,13 +26,16 @@ class UsersCanLikeStatusesTest extends DuskTestCase
             $browser->loginAs($user)
                     ->visit('/')
                     ->waitForText($status->body)
+                    ->assertSeeIn('@likes-count',0)
                     ->press('@btn-like')
                     ->waitForText('TE GUSTA')
                     ->assertSee('TE GUSTA')
-                    
+                    ->assertSeeIn('@likes-count',1)
+
                     ->press('@btn-unlike')
                     ->waitForText('ME GUSTA')
-                    ->assertSee('ME GUSTA');
+                    ->assertSee('ME GUSTA')
+                    ->assertSeeIn('@likes-count',0);
         });
     }
 }

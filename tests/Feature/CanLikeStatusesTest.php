@@ -21,11 +21,12 @@ class CanLikeStatusesTest extends TestCase
     {
         $status = Status::factory()->create();
 
-        $response = $this->post(route('statuses.likes.store', $status));
+        $response = $this->postJson(route('statuses.likes.store', $status));
 
         $this->assertGuest();
 
-        $response->assertRedirect('login');
+        // $response->assertRedirect('login');
+        $response->assertStatus(401);
     }
     
     /**
@@ -40,6 +41,7 @@ class CanLikeStatusesTest extends TestCase
         $user = User::factory()->create();
         $status = Status::factory()->create();
 
+        /** @var User $user */
         $this->actingAs($user)->postJson( route('statuses.likes.store', $status) );
 
         $this->assertDatabaseHas('likes',[
@@ -60,8 +62,9 @@ class CanLikeStatusesTest extends TestCase
 
         $user = User::factory()->create();
         $status = Status::factory()->create();
-        $this->actingAs($user)->postJson( route('statuses.likes.store', $status) );
-        
+
+        /** @var User $user */
+        $this->actingAs($user)->postJson( route('statuses.likes.store', $status) );        
         $this->actingAs($user)->deleteJson( route('statuses.likes.destroy', $status) );
 
         $this->assertDatabaseMissing('likes',[

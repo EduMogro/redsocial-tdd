@@ -15,9 +15,11 @@ class CreateStatusTest extends TestCase
     public function guests_users_can_not_create_statuses()
     {
         // $this->withoutExceptionHandling();
-        $response = $this->post(route('statuses.store',[ 'body' => 'Mi primer estado']));
+        
+        $response = $this->postJson(route('statuses.store',[ 'body' => 'Mi primer estado']));
         // dd($response->content());
-        $response ->assertRedirect('login');
+        // $response ->assertRedirect('login');
+        $response->assertStatus(401);
     }
 
     /** @test */
@@ -26,6 +28,8 @@ class CreateStatusTest extends TestCase
         // $this->withoutExceptionHandling();
 
         $user = User::factory()->create();
+        
+        /** @var User $user */
         $this->actingAs($user);
 
         $response = $this->postJson(route('statuses.store'), [
@@ -48,6 +52,8 @@ class CreateStatusTest extends TestCase
     public function a_status_requires_a_body()
     {
         $user = User::factory()->create();
+        
+        /** @var User $user */
         $this->actingAs($user);
 
         $response = $this->postJson(route('statuses.store'), [
@@ -65,6 +71,8 @@ class CreateStatusTest extends TestCase
     public function a_status_body_requires_a_minimum_length()
     {
         $user = User::factory()->create();
+
+        /** @var User $user */
         $this->actingAs($user);
 
         $response = $this->postJson(route('statuses.store'), [

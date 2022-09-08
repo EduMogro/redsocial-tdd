@@ -20,7 +20,9 @@ class UsersCanCreateStatusesTest extends DuskTestCase
     public function users_can_create_statuses()
     {
         $user = User::factory()->create();
-        // $this->actingAs($user);
+        
+        /** @var User $user */
+        $this->actingAs($user);
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)

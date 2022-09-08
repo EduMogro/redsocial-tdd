@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Like;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -40,5 +41,15 @@ class Status extends Model
     public function isLiked()
     {
         return $this->likes()->where('user_id',auth()->id())->exists();
+    }
+
+    public function likesCount() 
+    {
+        return $this->likes()->count();
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
